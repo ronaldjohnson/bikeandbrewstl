@@ -1,1 +1,6 @@
 # bikeandbrewstl
+
+
+``
+mvn clean install
+``
