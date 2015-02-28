@@ -17,8 +17,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.manning.spa</groupId>
-            <artifactId>spa-ear</artifactId>
+            <groupId>com.bikeandbrewstl</groupId>
+            <artifactId>bab-ear</artifactId>
             <version>${project.version}</version>
             <type>ear</type>
         </dependency>
