@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
+        <app.id>bikeandbrewstl</app.id>
     </properties>
 
     <dependencies>
