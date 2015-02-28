@@ -15,5 +15,5 @@ Upload to GAE/J (another app)
 mvn clean appengine:update -Dapp.id=<application-id> -Denv=<environment>
 ```
 
-http://<environment>.<application-id>.appspot.com
+http://\<environment\>.\<application-id\>.appspot.com
 http://dev.bikeandbrewstl.appspot.com/
