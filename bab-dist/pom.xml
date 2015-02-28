@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bikeandbrewstl</artifactId>
+        <groupId>com.bikeandbrewstl</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>bab-dist</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.manning.spa</groupId>
+            <artifactId>spa-ear</artifactId>
+            <version>${project.version}</version>
+            <type>ear</type>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.3</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${assembly.xml}</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${gae.version}</version>
+                <configuration>
+                    <enableJarClasses>false</enableJarClasses>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>appserverConfig-env</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <assembly.xml>src/assembly/env.xml</assembly.xml>
+                <assembly.appendAssemblyId>false</assembly.appendAssemblyId>
+            </properties>
+        </profile>
+        <profile>
+            <id>appserverConfig-dev</id>
+            <properties>
+                <env>dev</env>
+                <assembly.xml>src/assembly/src.xml</assembly.xml>
+                <assembly.appendAssemblyId>true</assembly.appendAssemblyId>
+            </properties>
+        </profile>
+        <profile>
+            <id>appserverConfig-test</id>
+            <properties>
+                <env>test</env>
+                <assembly.xml>src/assembly/src.xml</assembly.xml>
+                <assembly.appendAssemblyId>true</assembly.appendAssemblyId>
+            </properties>
+        </profile>
+    </profiles>
+</project>
