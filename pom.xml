@@ -34,4 +34,14 @@
       </plugin>
     </plugins>
   </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://localhost:9091/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus</id>
+            <url>http://localhost:9091/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
 </project>
